@@ -96,7 +96,7 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-4xl px-4 py-14 text-center md:py-20">
           <div className="animate-slide-up">
             <span className="hero-badge mb-6">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold-400 text-xs text-brand-900">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold-400 text-xs text-brand-950">
                 ✓
               </span>
               حساب موثّق — ١٫٥ ألف متابع
@@ -108,7 +108,7 @@ export default function HomePage() {
             <p className="mb-4 text-3xl font-black text-gold-300 md:text-4xl">
               أكل منزلي فاخر
             </p>
-            <p className="mx-auto mb-8 max-w-lg text-base font-medium text-gold-100/90 md:text-lg">
+            <p className="mx-auto mb-8 max-w-lg text-base font-medium text-brand-100 md:text-lg">
               {siteConfig.tagline}
             </p>
 
@@ -154,6 +154,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="py-10">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { emoji: "🍽️", value: `${products.length || "72"}+`, label: "صنف متاح" },
+              { emoji: "💒", value: "6", label: "باقات أفراح" },
+              { emoji: "🚚", value: "2", label: "مناطق توصيل" },
+              { emoji: "⭐", value: "1.5K", label: "متابع فيسبوك" },
+            ].map((stat) => (
+              <div key={stat.label} className="stat-card">
+                <p className="text-3xl">{stat.emoji}</p>
+                <p className="mt-2 text-2xl font-black text-brand-700">{stat.value}</p>
+                <p className="text-sm font-bold text-stone-600">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Delivery */}
       <section id="delivery" className="py-12">
         <div className="mx-auto max-w-6xl px-4">
@@ -168,7 +188,7 @@ export default function HomePage() {
                 <p className="mt-3 text-lg font-extrabold text-brand-800">{a}</p>
               </div>
             ))}
-            <div className="rounded-3xl border-2 border-brand-400 bg-gradient-to-br from-brand-700 to-brand-600 p-6 text-center text-white shadow-warm">
+            <div className="rounded-3xl border-2 border-brand-500 bg-gradient-to-br from-brand-700 to-brand-600 p-6 text-center text-white shadow-warm">
               <p className="text-4xl">⏰</p>
               <p className="mt-3 text-lg font-extrabold">{siteConfig.deliveryNote}</p>
             </div>
@@ -253,8 +273,8 @@ export default function HomePage() {
                   onClick={() => setFilter(cat)}
                   className={`rounded-2xl px-5 py-2.5 text-sm font-extrabold transition ${
                     filter === cat
-                      ? "bg-gradient-to-l from-brand-600 to-brand-500 text-white shadow-warm"
-                      : "border-2 border-gold-300/60 bg-gold-50/80 text-brand-800 hover:border-brand-400 hover:bg-brand-50"
+                      ? "bg-gradient-to-l from-brand-700 to-brand-500 text-white shadow-warm"
+                      : "border-2 border-brand-200/60 bg-brand-50/80 text-brand-800 hover:border-brand-400 hover:bg-brand-100"
                   }`}
                 >
                   {cat}
@@ -289,7 +309,7 @@ export default function HomePage() {
 
       {/* Reviews */}
       {reviews.length > 0 && (
-        <section id="reviews" className="border-t border-gold-300/40 bg-gradient-to-b from-gold-100/50 to-warm-bg py-14">
+        <section id="reviews" className="border-t border-brand-200/40 bg-gradient-to-b from-brand-50/40 to-warm-bg py-14">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="section-title mb-2">⭐ آراء العملاء</h2>
             <p className="mb-8 text-brand-800/70">آراء حقيقية من عملاء Cheef Mohamed Shaban</p>
@@ -319,17 +339,27 @@ export default function HomePage() {
 
       <Cart items={cartItems} area={area} onAreaChange={setArea} onClear={() => setCart({})} />
 
-      <footer className="border-t border-brand-900 bg-stone-900 py-10 text-center">
-        <p className="font-bold text-gold-200">{siteConfig.nameAr}</p>
-        <p className="mt-1 text-sm text-stone-400">أكل منزلي فاخر | بنها & القاهرة</p>
-        <a
-          href={siteConfig.facebookUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white"
-        >
-          تابعنا على فيسبوك
-        </a>
+      <footer className="border-t border-brand-800 bg-brand-950 py-10 text-center">
+        <p className="font-bold text-gold-300">{siteConfig.nameAr}</p>
+        <p className="mt-1 text-sm text-brand-200/70">أكل منزلي فاخر | بنها & القاهرة</p>
+        <div className="mt-5 flex flex-wrap justify-center gap-3">
+          <a
+            href={siteConfig.facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white"
+          >
+            تابعنا على فيسبوك
+          </a>
+          <a
+            href={getWhatsAppLink("مرحباً، عايز أطلب")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold px-6 py-2 text-sm"
+          >
+            واتساب للطلب
+          </a>
+        </div>
       </footer>
     </div>
   );

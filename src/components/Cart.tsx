@@ -41,7 +41,7 @@ const emptyForm: OrderForm = {
 };
 
 const inputClass =
-  "w-full rounded-xl border-2 border-gold-200 bg-white px-4 py-3 text-base text-stone-800 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100";
+  "w-full rounded-xl border-2 border-brand-200 bg-white px-4 py-3 text-base text-stone-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100";
 
 export default function Cart({ items, area, onAreaChange, onClear }: CartProps) {
   const [showForm, setShowForm] = useState(false);
@@ -415,14 +415,14 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       )}
 
       {/* Cart bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-2 border-gold-400/50 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-900 p-4 shadow-[0_-8px_30px_rgba(76,5,25,0.35)] backdrop-blur-md">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-2 border-brand-500/40 bg-gradient-to-l from-brand-950 via-brand-900 to-brand-950 p-4 shadow-[0_-8px_30px_rgba(2,44,34,0.4)] backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-extrabold text-gold-100">
+            <p className="font-extrabold text-brand-50">
               🛒 {items.length} صنف — الإجمالي:{" "}
               <span className="text-gold-300">{formatPrice(total)}</span>
             </p>
-            <p className="mt-1 text-xs font-semibold text-gold-200/70">
+            <p className="mt-1 text-xs font-semibold text-brand-200/80">
               📍 {area}
             </p>
           </div>

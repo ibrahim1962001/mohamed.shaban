@@ -32,18 +32,18 @@ export default function ProductSection({
   const isSky = accent === "sky";
 
   const sectionClass = isGold
-    ? "border-y border-gold-300/40 bg-gradient-to-b from-gold-100/60 via-warm-bg to-warm-bg py-14"
+    ? "border-y border-gold-300/35 bg-gradient-to-b from-gold-50/70 via-warm-bg to-warm-bg py-14"
     : isSky
-      ? "border-y border-sky-300/40 bg-gradient-to-b from-sky-100/50 via-warm-bg to-warm-bg py-14"
-      : "border-y border-brand-200/40 bg-gradient-to-b from-brand-100/40 via-warm-bg to-warm-bg py-14";
+      ? "border-y border-brand-300/30 bg-gradient-to-b from-brand-50/60 via-warm-bg to-warm-bg py-14"
+      : "border-y border-brand-200/35 bg-gradient-to-b from-brand-50/50 via-warm-bg to-warm-bg py-14";
 
   const badgeClass = isGold
-    ? "bg-gold-100 text-gold-700"
+    ? "bg-gold-100 text-gold-700 border border-gold-200"
     : isSky
-      ? "bg-sky-100 text-sky-700"
-      : "bg-brand-100 text-brand-700";
+      ? "bg-brand-100 text-brand-700 border border-brand-200"
+      : "bg-brand-100 text-brand-800 border border-brand-200";
 
-  const skeletonClass = isGold ? "bg-gold-100" : isSky ? "bg-sky-100" : "bg-brand-100";
+  const skeletonClass = isGold ? "bg-gold-100" : "bg-brand-100";
 
   return (
     <section id={id} className={sectionClass}>

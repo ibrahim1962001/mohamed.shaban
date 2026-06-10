@@ -35,7 +35,7 @@ export default function ProductCard({
           </div>
         )}
         {product.featured && (
-          <span className="absolute right-3 top-3 rounded-full bg-gradient-to-l from-brand-600 to-brand-500 px-3 py-1 text-xs font-extrabold text-white shadow-md">
+          <span className="absolute right-3 top-3 rounded-full bg-gradient-to-l from-gold-500 to-gold-400 px-3 py-1 text-xs font-extrabold text-brand-950 shadow-md">
             ⭐ مميز
           </span>
         )}
@@ -54,7 +54,7 @@ export default function ProductCard({
       <div className="p-5">
         <div className="mb-2 flex items-start justify-between gap-2">
           <h3 className="text-lg font-extrabold text-stone-800">{product.name}</h3>
-          <span className="shrink-0 rounded-lg bg-gold-100 px-2.5 py-1 text-xs font-bold text-brand-700">
+          <span className="shrink-0 rounded-lg bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-800">
             {product.category}
           </span>
         </div>
@@ -62,7 +62,7 @@ export default function ProductCard({
           {product.description || "—"}
         </p>
         <div className="mb-4">
-          <p className="text-2xl font-black text-brand-600">{formatPrice(product.price)}</p>
+          <p className="text-2xl font-black text-brand-700">{formatPrice(product.price)}</p>
           <p className="text-xs font-semibold text-stone-400">/ {product.unit}</p>
         </div>
 

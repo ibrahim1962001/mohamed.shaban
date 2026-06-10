@@ -20,10 +20,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-gold-400/40 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-900 shadow-lg backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b-2 border-brand-600/30 bg-gradient-to-l from-brand-950 via-brand-900 to-brand-950 shadow-lg backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative h-12 w-12 overflow-hidden rounded-2xl ring-2 ring-gold-400 shadow-warm">
+          <div className="relative h-12 w-12 overflow-hidden rounded-2xl ring-2 ring-gold-400/80 shadow-warm">
             <Image
               src={siteConfig.chefPhoto}
               alt={siteConfig.nameAr}
@@ -44,7 +44,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-xl px-2.5 py-2 text-xs font-bold text-gold-100/90 transition hover:bg-white/10 hover:text-gold-300 xl:px-3 xl:text-sm"
+              className="rounded-xl px-2.5 py-2 text-xs font-bold text-brand-100/90 transition hover:bg-white/10 hover:text-gold-300 xl:px-3 xl:text-sm"
             >
               {item.label}
             </a>
@@ -71,7 +71,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-400/40 bg-white/10 text-xl text-gold-200 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/40 bg-white/10 text-xl text-gold-200 lg:hidden"
             aria-label="القائمة"
           >
             {open ? "✕" : "☰"}
@@ -80,14 +80,14 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-gold-400/30 bg-brand-950/95 px-4 py-4 lg:hidden">
+        <div className="border-t border-brand-600/30 bg-brand-950/98 px-4 py-4 lg:hidden">
           <nav className="grid grid-cols-2 gap-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 rounded-xl border border-gold-400/25 bg-white/5 px-3 py-3 text-sm font-bold text-gold-100"
+                className="flex items-center gap-2 rounded-xl border border-brand-600/30 bg-white/5 px-3 py-3 text-sm font-bold text-brand-100"
               >
                 <span>{item.emoji}</span>
                 {item.label}
