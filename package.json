@@ -11,6 +11,7 @@
     "clean": "node scripts/clean-cache.mjs",
     "images:products": "node scripts/download-product-images.mjs",
     "images:generate": "node scripts/generate-missing-images.mjs",
+    "test:site": "node scripts/smoke-test.mjs",
     "lint": "next lint"
   },
   "dependencies": {
