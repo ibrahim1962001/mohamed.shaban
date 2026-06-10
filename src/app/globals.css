@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f3e9da;
+  --foreground: #2b1518;
+  --brand-900: #4c0519;
+  --brand-950: #3a0414;
+  --brand-50: #fef2f4;
+  --brand-200: #fbd0d9;
+  --brand-400: #f0708a;
+  --brand-500: #e11d48;
+  --brand-600: #be123c;
+  --brand-700: #9f1239;
+  --gold-50: #fffbeb;
+  --gold-100: #fef3c7;
+  --gold-200: #fde68a;
+  --fresh-500: #10b981;
+  --fresh-600: #059669;
+  --shadow-warm: 0 10px 40px -10px rgba(190, 18, 60, 0.22);
+  --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 0% -5%, rgba(190, 18, 60, 0.10), transparent 55%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(217, 119, 6, 0.12), transparent 50%),
+    var(--background);
+  background-attachment: fixed;
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+body.admin-body {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(to left, var(--brand-600), var(--brand-500));
+    box-shadow: var(--shadow-warm);
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(to left, var(--fresh-600), var(--fresh-500));
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .btn-whatsapp:hover {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+  }
+
+  .btn-whatsapp:active {
+    transform: scale(0.98);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #292524;
+  }
+
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 1.875rem;
+    }
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(circle, #e7e5e4 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--brand-200);
+    background: var(--brand-50);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-700);
+  }
+
+  .hero-tag {
+    border-radius: 9999px;
+    border: 2px solid var(--gold-200);
+    background: #fff;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #44403c;
+  }
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #be123c;
+  border-radius: 4px;
+}

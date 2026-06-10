@@ -1,0 +1,181 @@
+Source URL comment: saved from mohamed.shaban.129491
+File size: 5319865 chars
+JSON blocks: 168
+Profile-related blocks: 2
+
+============================================================
+PROFILE BLOCK 1
+============================================================
+  • is_verified
+  • Cheef Mohamed Shaban
+  • TYPEAHEAD_PAGE_MARKER
+
+============================================================
+PROFILE BLOCK 2
+============================================================
+  • is_verified
+  • cheef mohamed shaban
+  • Cheef Mohamed Shaban
+  • mohamed elfeky
+  • Mohamed Elfeky
+  • karim a. mohamed
+  • Karim A. MohAmed
+  • mohamed shaban
+  • Mohamed Shaban
+  • mohamed amr
+  • Mohamed Amr
+  • abdallah mohamed
+  • Abdallah Mohamed
+  • mohamed ezzat
+  • Mohamed Ezzat
+  • mohamed bassem
+  • Mohamed Bassem
+  • dr-mohamed ramadan
+  • Dr-Mohamed Ramadan
+  • yosaaf shaban
+  • Yosaaf Shaban
+  • mohamed ramadan
+  • Mohamed Ramadan
+  • mohamed magdy
+  • Mohamed Magdy
+  • mohamed bibo
+  • Mohamed BiBo
+  • mohamed hassan
+  • Mohamed Hassan
+  • mohamed el feky
+  • Mohamed El Feky
+  • mohamed sabry olma
+  • Mohamed Sabry Olma
+  • mohamed a hassan
+  • Mohamed A Hassan
+  • mohamed ala
+  • Mohamed Ala
+  • mohamed abdellkareem
+  • Mohamed AbdEllkareem
+  • mohamed yasser
+  • Mohamed Yasser
+  • karam mohamed salam
+  • Karam Mohamed Salam
+  • mohamed sanad
+  • Mohamed Sanad
+  • mohamed ibrahim
+  • Mohamed Ibrahim
+  • mohamed f saleh
+  • Mohamed F Saleh
+  • mohamed bayomi
+  • Mohamed Bayomi
+  • momtaz mohamed
+  • Momtaz Mohamed
+  • mohamed hawel
+  • Mohamed HaweL
+  • mohamed rashad
+  • Mohamed Rashad
+  • mohamed bika
+  • Mohamed Bika
+  • mohamed zezo
+  • Mohamed Zezo
+  • mohamed anwar
+  • Mohamed Anwar
+  • elsayed mohamed
+  • Elsayed Mohamed
+  • mohamedd ammr
+  • Mohamedd Ammr
+  • hassan mohamed
+  • Hassan Mohamed
+  • mohamed gamal
+  • Mohamed Gamal
+  • hamada mohamed abdul ati
+  • Hamada Mohamed Abdul Ati
+  • mohamed elgamal
+  • Mohamed ElGamal
+  • mohamed khaled
+  • Mohamed Khaled
+  • kareem mohamed
+  • Kareem Mohamed
+  • mohamed hamza
+  • Mohamed Hamza
+  • mohamed rabee
+  • Mohamed Rabee
+  • mohamed wahed
+  • Mohamed Wahed
+  • mohamed mohamed
+  • Mohamed Mohamed
+  • mohamed hassen ahmed
+  • Mohamed Hassen Ahmed
+  • mohamed kelany
+  • Mohamed Kelany
+  • mohamed fathy
+  • Mohamed Fathy
+  • mohamed ebrahem
+  • Mohamed Ebrahem
+  • mohamed nassar
+  • Mohamed Nassar
+  • mohamed alia
+  • Mohamed Alia
+
+============================================================
+PATTERN MATCHES ACROSS FULL FILE
+============================================================
+
+Pattern: "name"\s*:\s*"([^"]*[Cc]heef[^"]*)"
+  → Cheef Mohamed Shaban
+
+Pattern: "name"\s*:\s*"([^"]*[Ss]haban[^"]*)"
+  → Cheef Mohamed Shaban
+
+Pattern: "message"\s*:\s*\{"text"\s*:\s*"([^"]{20,})"
+  → تجفيف الورد بديزاين جديد??????????
+#Made_with_love ??????????
+  → ?? جربت تدفع اعلاناتك على Facebook, Instagram, Google, Tiktok؟
+مع Converted Pay لو بتشحن باقل من 50,000 جنيه في الشهر، هتستمتع بـ 0 رسوم شحن.
+يعني فلوسك كلها هتروح لحملاتك الإعلانية من غير أي مصاريف زيادة.
+  → \ud83d\udd34 \u0627\u0644\u0645\u0648\u0646\u062a\u064a\u0631 \u0627\u0644\u0628\u0634\u0631\u064a \u0641\u064a \u062e\u0637\u0631.. \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0648\u0643\u0648\u062f \u0627\u0644\u0640 HTML \u0647\u064a\u0646\u0647\u0648\u0627 \u0639\u0635\u0631 \u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u0648\u0646\u062a\u0627\u062c \u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a\u0629! \ud83e\udd2f\ud83d\udc47\n\n\u0627
+
+============================================================
+VISIBLE TEXT LINES (filtered)
+============================================================
+Cheef Mohamed Shaban&nbsp;
+Poultry Marinades: تتبيلات الفراخ
+Meal Prep Specialist: متخصص في تجهيز الوجبات
+Cheef Mohamed Shaban
+اكتب شيئًا إلى Cheef Mohamed...
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+Cheef Mohamed Shaban
+متاح فوري كيلو كفتة ارز هنزل عليه خصم 200 جنيه بس المندوب خارج الساعه 3
+متاح فوري كيلو كفتة ارز هنزل عليه خصم 200 جنيه بس المندوب خارج الساعه 3
+Cheef Mohamed Shaban
+
+============================================================
+FEED POST MESSAGES (largest blocks)
+============================================================
+  POST: تجفيف الورد بديزاين جديد??????????
+#Made_with_love ??????????
+  POST: تجفيف الورد بديزاين جديد??????????
+#Made_with_love ??????????
+  POST: ?? جربت تدفع اعلاناتك على Facebook, Instagram, Google, Tiktok؟
+مع Converted Pay لو بتشحن باقل من 50,000 جنيه في الشهر، هتستمتع بـ 0 رسوم شحن.
+يعني فلوسك كلها هتروح لحملاتك الإعلانية من غير أي مصاريف زيادة.
+  POST: ?? جربت تدفع اعلاناتك على Facebook, Instagram, Google, Tiktok؟
+مع Converted Pay لو بتشحن باقل من 50,000 جنيه في الشهر، هتستمتع بـ 0 رسوم شحن.
+يعني فلوسك كلها هتروح لحملاتك الإعلانية من غير أي مصاريف زيادة.
+  POST: ?? المونتير البشري في خطر.. الذكاء الاصطناعي وكود الـ HTML هينهوا عصر برامج المونتاج التقليدية! ????
+
+انسى الـ Premiere والـ After Effects.. الزمن اللي كنت بتقعد فيه بالساعات عشان تطلع فيديو مدته دقيقة خلاص بيخلص، والبديل صدم الجميع!
+
+مشروع جديد مرعب ومفتوح المصدر اسمه HyperFrames قلب السوشيال ميديا الساعات اللي فاتت.. الأداة دي بتخليك تصنع فيديو احترافي عالي الجودة وصيغة MP4 بمجرد كتابة كود ويب عادي (HTML و CSS)! ????
+
+إزاي السحر ده بيحصل؟
+الأداة دي مش معمولة للبشر.. دي معمولة لـ "وكلاء الذكاء الاصطناعي" (AI Agents). يعني بتسيب الروبوت هو اللي يخطط للفيديو، ويكتب السكريبت، ويصمم المشاهد بالـ 
+  POST: ?? المونتير البشري في خطر.. الذكاء الاصطناعي وكود الـ HTML هينهوا عصر برامج المونتاج التقليدية! ????
+
+انسى الـ Premiere والـ After Effects.. الزمن اللي كنت بتقعد فيه بالساعات عشان تطلع فيديو مدته دقيقة خلاص بيخلص، والبديل صدم الجميع!
+
+مشروع جديد مرعب ومفتوح المصدر اسمه HyperFrames قلب السوشيال ميديا الساعات اللي فاتت.. الأداة دي بتخليك تصنع فيديو احترافي عالي الجودة وصيغة MP4 بمجرد كتابة كود ويب عادي (HTML و CSS)! ????
+
+إزاي السحر ده بيحصل؟
+الأداة دي مش معمولة للبشر.. دي معمولة لـ "وكلاء الذكاء الاصطناعي" (AI Agents). يعني بتسيب الروبوت هو اللي يخطط للفيديو، ويكتب السكريبت، ويصمم المشاهد بالـ 
