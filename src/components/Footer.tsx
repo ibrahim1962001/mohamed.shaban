@@ -63,7 +63,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-brand-800 pt-6 text-center text-xs text-brand-300/50">
-          © {new Date().getFullYear()} {siteConfig.nameAr} — كل الحقوق محفوظة
+          <p>© {new Date().getFullYear()} {siteConfig.nameAr} — كل الحقوق محفوظة</p>
+          <p className="mt-2 text-brand-200/60">
+            Website designed by{" "}
+            <span className="font-semibold text-gold-300/80">Ibrahim Sabry</span>
+            {" · "}
+            <a
+              href="tel:+201098144372"
+              className="font-semibold text-brand-100/70 transition hover:text-gold-300"
+            >
+              01098144372
+            </a>
+          </p>
         </div>
       </div>
     </footer>
