@@ -2,6 +2,7 @@
 
 import type { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
+import SectionHeader from "@/components/SectionHeader";
 
 interface ProductSectionProps {
   id: string;
@@ -32,45 +33,35 @@ export default function ProductSection({
   const isSky = accent === "sky";
 
   const sectionClass = isGold
-    ? "border-y border-gold-300/35 bg-gradient-to-b from-gold-50/70 via-warm-bg to-warm-bg py-14"
+    ? "border-y border-gold-300/35 bg-gradient-to-b from-gold-50/70 via-warm-bg to-warm-bg py-8 sm:py-14"
     : isSky
-      ? "border-y border-brand-300/30 bg-gradient-to-b from-brand-50/60 via-warm-bg to-warm-bg py-14"
-      : "border-y border-brand-200/35 bg-gradient-to-b from-brand-50/50 via-warm-bg to-warm-bg py-14";
-
-  const badgeClass = isGold
-    ? "bg-gold-100 text-gold-700 border border-gold-200"
-    : isSky
-      ? "bg-brand-100 text-brand-700 border border-brand-200"
-      : "bg-brand-100 text-brand-800 border border-brand-200";
+      ? "border-y border-brand-300/30 bg-gradient-to-b from-brand-50/60 via-warm-bg to-warm-bg py-8 sm:py-14"
+      : "border-y border-brand-200/35 bg-gradient-to-b from-brand-50/50 via-warm-bg to-warm-bg py-8 sm:py-14";
 
   const skeletonClass = isGold ? "bg-gold-100" : "bg-brand-100";
 
   return (
     <section id={id} className={sectionClass}>
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-8 text-center md:text-right">
-          <span
-            className={`mb-3 inline-block rounded-full px-4 py-1.5 text-sm font-bold ${badgeClass}`}
-          >
-            {emoji} {title}
-          </span>
-          <h2 className="section-title mb-2">{title}</h2>
-          <p className="mx-auto max-w-2xl text-stone-600 md:mx-0">{subtitle}</p>
-        </div>
+      <div className="mx-auto max-w-6xl px-3 sm:px-4">
+        <SectionHeader
+          eyebrow={emoji}
+          title={title}
+          subtitle={subtitle}
+        />
 
         {loading ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3 lg:gap-6">
+            {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className={`h-96 animate-pulse rounded-3xl ${skeletonClass}`}
+                className={`aspect-[3/4] animate-pulse rounded-xl sm:aspect-auto sm:h-96 sm:rounded-3xl ${skeletonClass}`}
               />
             ))}
           </div>
         ) : products.length === 0 ? (
           <p className="text-center font-semibold text-stone-400">لا توجد أصناف حالياً</p>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3 lg:gap-6">
             {products.map((product) => (
               <ProductCard
                 key={product.id}

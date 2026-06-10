@@ -10,22 +10,22 @@ export const prepStatusOptions: PrepStatusOption[] = [
   {
     id: "instant",
     label: "متاح فوري",
-    badgeClass: "bg-green-100 text-green-800 border-green-200",
+    badgeClass: "border-green-700 bg-green-600 text-white",
   },
   {
     id: "on_order",
     label: "يتحضر عند الطلب",
-    badgeClass: "bg-amber-100 text-amber-800 border-amber-200",
+    badgeClass: "border-amber-600 bg-amber-500 text-white",
   },
   {
     id: "next_day",
     label: "متاح من اليوم التالي",
-    badgeClass: "bg-blue-100 text-blue-800 border-blue-200",
+    badgeClass: "border-blue-700 bg-blue-600 text-white",
   },
   {
     id: "preorder",
     label: "طلب مسبق",
-    badgeClass: "bg-purple-100 text-purple-800 border-purple-200",
+    badgeClass: "border-purple-700 bg-purple-600 text-white",
   },
 ];
 

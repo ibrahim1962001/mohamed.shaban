@@ -11,7 +11,7 @@ export default function PrepStatusBadge({
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-bold ${status.badgeClass} ${className}`}
+      className={`inline-flex items-center rounded-full border-2 px-2.5 py-1 text-xs font-extrabold shadow-lg ring-2 ring-white/90 ${status.badgeClass} ${className}`}
     >
       {status.label}
     </span>

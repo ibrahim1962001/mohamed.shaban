@@ -21,9 +21,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-brand-600/30 bg-gradient-to-l from-brand-950 via-brand-900 to-brand-950 shadow-lg backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="relative h-12 w-12 overflow-hidden rounded-2xl ring-2 ring-gold-400/80 shadow-warm">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:px-4 sm:py-3">
+        <Link href="/" className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl ring-2 ring-gold-400/80 shadow-warm sm:h-12 sm:w-12 sm:rounded-2xl">
             <Image
               src={siteConfig.chefPhoto}
               alt={siteConfig.nameAr}
@@ -33,9 +33,9 @@ export default function Header() {
               priority
             />
           </div>
-          <div>
-            <p className="text-lg font-extrabold text-white">{siteConfig.nameAr}</p>
-            <p className="text-xs font-semibold text-gold-300">أكل بيتي فاخر</p>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-extrabold text-white sm:text-lg">{siteConfig.nameAr}</p>
+            <p className="truncate text-[10px] font-semibold text-gold-300 sm:text-xs">أكل بيتي فاخر</p>
           </div>
         </Link>
 
@@ -51,7 +51,16 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <a
+            href={getWhatsAppLink("مرحباً، عايز أطلب من Cheef Mohamed Shaban")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-whatsapp flex h-10 min-h-0 items-center justify-center px-3 py-2 text-xs sm:hidden"
+            aria-label="واتساب"
+          >
+            واتساب
+          </a>
           <a
             href={siteConfig.facebookUrl}
             target="_blank"
@@ -71,7 +80,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/40 bg-white/10 text-xl text-gold-200 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/40 bg-white/10 text-lg text-gold-200 lg:hidden"
             aria-label="القائمة"
           >
             {open ? "✕" : "☰"}

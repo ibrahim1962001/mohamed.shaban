@@ -151,7 +151,7 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
           onClick={handleCloseForm}
         >
           <div
-            className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 shadow-2xl sm:rounded-3xl sm:p-6"
+            className="safe-bottom max-h-[95dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-4 shadow-2xl sm:max-h-[92vh] sm:rounded-3xl sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-5 flex items-center justify-between">
@@ -415,14 +415,14 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       )}
 
       {/* Cart bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-2 border-brand-500/40 bg-gradient-to-l from-brand-950 via-brand-900 to-brand-950 p-4 shadow-[0_-8px_30px_rgba(2,44,34,0.4)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="font-extrabold text-brand-50">
-              🛒 {items.length} صنف — الإجمالي:{" "}
+      <div className="safe-bottom fixed bottom-0 left-0 right-0 z-50 border-t-2 border-brand-500/40 bg-gradient-to-l from-brand-950 via-brand-900 to-brand-950 px-3 py-3 shadow-[0_-8px_30px_rgba(2,44,34,0.4)] backdrop-blur-md sm:p-4">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-sm font-extrabold text-brand-50 sm:text-base">
+              🛒 {items.length} صنف —{" "}
               <span className="text-gold-300">{formatPrice(total)}</span>
             </p>
-            <p className="mt-1 text-xs font-semibold text-brand-200/80">
+            <p className="mt-0.5 text-[11px] font-semibold text-brand-200/80 sm:mt-1 sm:text-xs">
               📍 {area}
             </p>
           </div>
@@ -430,13 +430,13 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
           <div className="flex gap-2">
             <button
               onClick={onClear}
-              className="rounded-2xl border-2 border-red-200 px-4 py-3 text-sm font-bold text-red-600 transition hover:bg-red-50"
+              className="min-h-[48px] rounded-xl border-2 border-red-200 px-4 py-3 text-sm font-bold text-red-600 transition active:scale-95 sm:rounded-2xl"
             >
               مسح
             </button>
             <button
               onClick={handleOpenForm}
-              className="btn-whatsapp flex-1 px-6 py-3 text-sm sm:flex-none"
+              className="btn-whatsapp min-h-[48px] flex-1 px-4 py-3 text-sm sm:flex-none sm:px-6"
             >
               إتمام الطلب
             </button>

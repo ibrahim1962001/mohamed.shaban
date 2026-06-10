@@ -5,6 +5,9 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
 import ProductSection from "@/components/ProductSection";
+import SectionHeader from "@/components/SectionHeader";
+import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Cart from "@/components/Cart";
 import type { Product } from "@/lib/types";
 import { siteConfig, getWhatsAppLink } from "@/lib/config";
@@ -93,81 +96,93 @@ export default function HomePage() {
         <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-gold-400/20 blur-3xl" />
         <div className="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-brand-400/20 blur-3xl" />
 
-        <div className="relative mx-auto max-w-4xl px-4 py-14 text-center md:py-20">
-          <div className="animate-slide-up">
-            <span className="hero-badge mb-6">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold-400 text-xs text-brand-950">
-                ✓
-              </span>
-              حساب موثّق — ١٫٥ ألف متابع
-            </span>
+        <div className="relative mx-auto max-w-6xl px-3 py-10 sm:px-4 sm:py-14 md:py-16">
+          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+            <div className="animate-slide-up text-center md:text-right">
+              <p className="mb-2 text-xs font-extrabold tracking-wide text-gold-300 sm:text-sm">
+                Cheef Mohamed Shaban
+              </p>
+              <h1 className="mb-2 text-2xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
+                {siteConfig.nameAr}
+              </h1>
+              <p className="mb-4 text-lg font-black text-gold-300 sm:text-2xl md:text-3xl">
+                أكل منزلي فاخر
+              </p>
+              <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-brand-100 sm:text-base md:mx-0">
+                {siteConfig.tagline}
+              </p>
 
-            <h1 className="mb-3 text-4xl font-black leading-tight text-white md:text-5xl">
-              {siteConfig.nameAr}
-            </h1>
-            <p className="mb-4 text-3xl font-black text-gold-300 md:text-4xl">
-              أكل منزلي فاخر
-            </p>
-            <p className="mx-auto mb-8 max-w-lg text-base font-medium text-brand-100 md:text-lg">
-              {siteConfig.tagline}
-            </p>
+              <div className="mb-6 flex flex-wrap justify-center gap-2 md:justify-start">
+                {siteConfig.specialties.map((s) => (
+                  <span key={s} className="hero-tag text-xs sm:text-sm">
+                    {s}
+                  </span>
+                ))}
+              </div>
 
-            <div className="mb-8 flex flex-wrap justify-center gap-2.5">
-              {siteConfig.specialties.map((s) => (
-                <span key={s} className="hero-tag">
-                  {s}
-                </span>
-              ))}
-            </div>
-
-            <div className="mb-10 grid grid-cols-3 gap-2 sm:grid-cols-6">
-              {[
-                { href: "#weddings", emoji: "💒", label: "الأفراح" },
-                { href: "#grooms", emoji: "💍", label: "العرسان" },
-                { href: "#parties", emoji: "🎉", label: "عزومات" },
-                { href: "#trays", emoji: "🍱", label: "صواني" },
-                { href: "#drinks", emoji: "🥤", label: "مشروبات" },
-                { href: "#menu", emoji: "🍽️", label: "المنيو" },
-              ].map((link) => (
-                <a key={link.href} href={link.href} className="quick-link">
-                  <span className="text-2xl">{link.emoji}</span>
-                  {link.label}
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+                <a href="#menu" className="btn-primary sm:min-w-[180px]">
+                  🍽️ شوف المنيو
                 </a>
-              ))}
+                <a
+                  href={getWhatsAppLink("مرحباً، عايز أطلب")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp sm:min-w-[180px]"
+                >
+                  واتساب للطلب
+                </a>
+              </div>
             </div>
 
-            <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-              <a href="#menu" className="btn-primary sm:min-w-[200px]">
-                <span aria-hidden>🍽️</span>
-                شوف المنيو
-              </a>
-              <a
-                href={getWhatsAppLink("مرحباً، عايز أطلب")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp sm:min-w-[200px]"
-              >
-                واتساب للطلب
-              </a>
+            <div className="animate-slide-up">
+              <div className="chef-frame">
+                <div className="chef-frame-inner relative aspect-[4/5] w-full">
+                  <Image
+                    src={siteConfig.chefPhoto}
+                    alt={siteConfig.nameAr}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 280px, 400px"
+                    priority
+                  />
+                </div>
+              </div>
+              <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2">
+                {[
+                  { href: "#weddings", emoji: "💒", label: "الأفراح" },
+                  { href: "#grooms", emoji: "💍", label: "العرسان" },
+                  { href: "#parties", emoji: "🎉", label: "عزومات" },
+                  { href: "#trays", emoji: "🍱", label: "صواني" },
+                  { href: "#drinks", emoji: "🥤", label: "مشروبات" },
+                  { href: "#menu", emoji: "🍽️", label: "المنيو" },
+                ].map((link) => (
+                  <a key={link.href} href={link.href} className="quick-link">
+                    <span className="text-xl sm:text-2xl">{link.emoji}</span>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-10">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {[
-              { emoji: "🍽️", value: `${products.length || "72"}+`, label: "صنف متاح" },
-              { emoji: "💒", value: "6", label: "باقات أفراح" },
-              { emoji: "🚚", value: "2", label: "مناطق توصيل" },
-              { emoji: "⭐", value: "1.5K", label: "متابع فيسبوك" },
-            ].map((stat) => (
-              <div key={stat.label} className="stat-card">
-                <p className="text-3xl">{stat.emoji}</p>
-                <p className="mt-2 text-2xl font-black text-brand-700">{stat.value}</p>
-                <p className="text-sm font-bold text-stone-600">{stat.label}</p>
+      {/* Why us */}
+      <section className="py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl px-3 sm:px-4">
+          <SectionHeader
+            eyebrow="ليه تختارنا"
+            title="شغل بيتي بمعايير احترافية"
+            subtitle="من التتبيلات اليومية لبوفيهات الأفراح — جودة ثابتة وطعم مميز."
+            align="center"
+          />
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
+            {siteConfig.whyUs.map((item) => (
+              <div key={item.title} className="why-card">
+                <p className="text-2xl sm:text-3xl">{item.icon}</p>
+                <p className="mt-2 text-sm font-extrabold text-brand-900 sm:text-base">{item.title}</p>
+                <p className="mt-1 hidden text-xs leading-relaxed text-stone-500 sm:block">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -175,22 +190,27 @@ export default function HomePage() {
       </section>
 
       {/* Delivery */}
-      <section id="delivery" className="py-12">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="section-title mb-8 text-center">🚚 التوصيل</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
+      <section id="delivery" className="py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl px-3 sm:px-4">
+          <SectionHeader
+            eyebrow="🚚 التوصيل"
+            title="بنوصل لحد بابك"
+            subtitle={siteConfig.deliveryNote}
+            align="center"
+          />
+          <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
             {siteConfig.deliveryAreas.map((a, i) => (
               <div
                 key={a}
-                className="section-panel p-6 text-center transition hover:shadow-warm"
+                className="section-panel p-4 text-center transition hover:shadow-warm sm:p-6"
               >
-                <p className="text-4xl">{i === 0 ? "🏠" : "🏙️"}</p>
-                <p className="mt-3 text-lg font-extrabold text-brand-800">{a}</p>
+                <p className="text-3xl sm:text-4xl">{i === 0 ? "🏠" : "🏙️"}</p>
+                <p className="mt-2 text-base font-extrabold text-brand-800 sm:mt-3 sm:text-lg">{a}</p>
               </div>
             ))}
-            <div className="rounded-3xl border-2 border-brand-500 bg-gradient-to-br from-brand-700 to-brand-600 p-6 text-center text-white shadow-warm">
-              <p className="text-4xl">⏰</p>
-              <p className="mt-3 text-lg font-extrabold">{siteConfig.deliveryNote}</p>
+            <div className="rounded-2xl border-2 border-brand-500 bg-gradient-to-br from-brand-700 to-brand-600 p-4 text-center text-white shadow-warm sm:rounded-3xl sm:p-6">
+              <p className="text-3xl sm:text-4xl">⏰</p>
+              <p className="mt-2 text-base font-extrabold sm:mt-3 sm:text-lg">{siteConfig.deliveryNote}</p>
             </div>
           </div>
         </div>
@@ -262,16 +282,20 @@ export default function HomePage() {
       />
 
       {/* Menu */}
-      <section id="menu" className="py-14 pb-36">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="section-title">🍽️ المنيو</h2>
-            <div className="flex flex-wrap gap-2">
+      <section id="menu" className="py-8 pb-32 sm:py-14 sm:pb-36">
+        <div className="mx-auto max-w-6xl px-3 sm:px-4">
+          <SectionHeader
+            eyebrow="🍽️ المنيو الكامل"
+            title="اختار من أصنافنا"
+            subtitle={`أكثر من ${products.length || 72} صنف — لحوم، دواجن، محاشي، وجبات جاهزة وأكتر.`}
+          />
+          <div className="filter-scroll -mx-3 mb-6 overflow-x-auto px-3 sm:mx-0 sm:mb-8 sm:overflow-visible sm:px-0">
+            <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`rounded-2xl px-5 py-2.5 text-sm font-extrabold transition ${
+                  className={`shrink-0 rounded-xl px-4 py-2.5 text-xs font-extrabold transition sm:rounded-2xl sm:px-5 sm:text-sm ${
                     filter === cat
                       ? "bg-gradient-to-l from-brand-700 to-brand-500 text-white shadow-warm"
                       : "border-2 border-brand-200/60 bg-brand-50/80 text-brand-800 hover:border-brand-400 hover:bg-brand-100"
@@ -284,15 +308,15 @@ export default function HomePage() {
           </div>
 
           {loading ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3 lg:gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-96 animate-pulse rounded-3xl bg-brand-100" />
+                <div key={i} className="aspect-[3/4] animate-pulse rounded-xl bg-brand-100 sm:aspect-auto sm:h-96 sm:rounded-3xl" />
               ))}
             </div>
           ) : filtered.length === 0 ? (
             <p className="text-center font-semibold text-stone-400">لا توجد منتجات حالياً</p>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3 lg:gap-6">
               {filtered.map((product) => (
                 <ProductCard
                   key={product.id}
@@ -309,11 +333,15 @@ export default function HomePage() {
 
       {/* Reviews */}
       {reviews.length > 0 && (
-        <section id="reviews" className="border-t border-brand-200/40 bg-gradient-to-b from-brand-50/40 to-warm-bg py-14">
-          <div className="mx-auto max-w-6xl px-4">
-            <h2 className="section-title mb-2">⭐ آراء العملاء</h2>
-            <p className="mb-8 text-brand-800/70">آراء حقيقية من عملاء Cheef Mohamed Shaban</p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="reviews" className="border-t border-brand-200/40 bg-gradient-to-b from-brand-50/40 to-warm-bg py-8 sm:py-14">
+          <div className="mx-auto max-w-6xl px-3 sm:px-4">
+            <SectionHeader
+              eyebrow="⭐ آراء العملاء"
+              title="عملاؤنا بيقولوا إيه"
+              subtitle="آراء حقيقية من عملاء Cheef Mohamed Shaban"
+              align="center"
+            />
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {reviews.map((review, i) => (
                 <div key={i} className="product-card">
                   {review.image && (
@@ -337,30 +365,27 @@ export default function HomePage() {
         </section>
       )}
 
-      <Cart items={cartItems} area={area} onAreaChange={setArea} onClear={() => setCart({})} />
-
-      <footer className="border-t border-brand-800 bg-brand-950 py-10 text-center">
-        <p className="font-bold text-gold-300">{siteConfig.nameAr}</p>
-        <p className="mt-1 text-sm text-brand-200/70">أكل منزلي فاخر | بنها & القاهرة</p>
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
+      {/* CTA */}
+      <section className="px-3 pb-8 sm:px-4 sm:pb-12">
+        <div className="cta-banner mx-auto max-w-6xl">
+          <h2 className="text-xl font-black text-white sm:text-2xl">جاهز تطلب؟</h2>
+          <p className="mx-auto mt-2 max-w-md text-sm text-brand-100 sm:text-base">
+            اختار أصنافك، كمّل الطلب، وابعتله على واتساب — هنرد عليك فوراً.
+          </p>
           <a
-            href={siteConfig.facebookUrl}
+            href={getWhatsAppLink("مرحباً، عايز أطلب من Cheef Mohamed Shaban")}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white"
+            className="btn-gold mt-5 inline-flex px-8 py-3 text-sm"
           >
-            تابعنا على فيسبوك
-          </a>
-          <a
-            href={getWhatsAppLink("مرحباً، عايز أطلب")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold px-6 py-2 text-sm"
-          >
-            واتساب للطلب
+            اطلب على واتساب
           </a>
         </div>
-      </footer>
+      </section>
+
+      <Cart items={cartItems} area={area} onAreaChange={setArea} onClear={() => setCart({})} />
+      <FloatingWhatsApp hidden={cartItems.length > 0} />
+      <Footer />
     </div>
   );
 }
