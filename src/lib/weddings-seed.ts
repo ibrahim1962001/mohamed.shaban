@@ -18,7 +18,7 @@ function make(
     price,
     unit,
     category,
-    image: "",
+    image: `/products/${id}.jpg`,
     prepStatus: "preorder",
     available: true,
     featured,

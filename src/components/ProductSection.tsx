@@ -32,10 +32,10 @@ export default function ProductSection({
   const isSky = accent === "sky";
 
   const sectionClass = isGold
-    ? "border-y border-gold-200 bg-gradient-to-b from-gold-50 via-white to-warm-bg py-14"
+    ? "border-y border-gold-300/40 bg-gradient-to-b from-gold-100/60 via-warm-bg to-warm-bg py-14"
     : isSky
-      ? "border-y border-sky-200 bg-gradient-to-b from-sky-50/80 via-white to-warm-bg py-14"
-      : "border-y border-brand-100 bg-gradient-to-b from-brand-50/60 via-white to-warm-bg py-14";
+      ? "border-y border-sky-300/40 bg-gradient-to-b from-sky-100/50 via-warm-bg to-warm-bg py-14"
+      : "border-y border-brand-200/40 bg-gradient-to-b from-brand-100/40 via-warm-bg to-warm-bg py-14";
 
   const badgeClass = isGold
     ? "bg-gold-100 text-gold-700"

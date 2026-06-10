@@ -10,6 +10,7 @@
     "prod": "npm run build && next start -p 3000",
     "clean": "node scripts/clean-cache.mjs",
     "images:products": "node scripts/download-product-images.mjs",
+    "images:generate": "node scripts/generate-missing-images.mjs",
     "lint": "next lint"
   },
   "dependencies": {

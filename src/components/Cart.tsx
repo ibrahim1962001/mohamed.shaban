@@ -23,6 +23,9 @@ interface OrderForm {
   phone1: string;
   phone2: string;
   payment: string;
+  eventDate: string;
+  guestCount: string;
+  notes: string;
 }
 
 const emptyForm: OrderForm = {
@@ -32,6 +35,9 @@ const emptyForm: OrderForm = {
   phone1: "",
   phone2: "",
   payment: "cash",
+  eventDate: "",
+  guestCount: "",
+  notes: "",
 };
 
 const inputClass =
@@ -45,6 +51,12 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
   const total = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
+  );
+
+  const hasEventItems = items.some(
+    (item) =>
+      item.product.category === "أكل الأفراح" ||
+      item.product.category === "أكل العرسان"
   );
 
   const paymentLabel =
@@ -73,6 +85,15 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       `💰 *الإجمالي:* ${formatPrice(total)}`,
       `📍 *منطقة التوصيل:* ${area}`,
       `💳 *طريقة الدفع:* ${paymentLabel}`,
+      ...(order.eventDate.trim()
+        ? [`📅 *تاريخ المناسبة:* ${order.eventDate.trim()}`]
+        : []),
+      ...(order.guestCount.trim()
+        ? [`👥 *عدد الضيوف:* ${order.guestCount.trim()}`]
+        : []),
+      ...(order.notes.trim()
+        ? [`📝 *ملاحظات:* ${order.notes.trim()}`]
+        : []),
     ];
     return lines.join("\n");
   };
@@ -94,6 +115,11 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       next.phone2 = "رقم موبايل مصري صحيح (11 رقم)";
 
     if (!form.payment) next.payment = "اختار طريقة الدفع";
+
+    if (hasEventItems) {
+      if (!form.eventDate.trim()) next.eventDate = "حدد تاريخ المناسبة";
+      if (!form.guestCount.trim()) next.guestCount = "اكتب عدد الضيوف المتوقع";
+    }
 
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -269,6 +295,68 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
                 </div>
               </div>
 
+              {hasEventItems && (
+                <div className="rounded-2xl border-2 border-brand-200 bg-brand-50/60 p-4 space-y-4">
+                  <p className="text-sm font-bold text-brand-800">
+                    💒 بيانات الحجز (أفراح / عرسان)
+                  </p>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-stone-700">
+                        تاريخ المناسبة *
+                      </label>
+                      <input
+                        type="date"
+                        value={form.eventDate}
+                        onChange={(e) =>
+                          setForm((f) => ({ ...f, eventDate: e.target.value }))
+                        }
+                        className={inputClass}
+                      />
+                      {errors.eventDate && (
+                        <p className="mt-1 text-xs font-semibold text-red-600">
+                          {errors.eventDate}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-sm font-bold text-stone-700">
+                        عدد الضيوف *
+                      </label>
+                      <input
+                        type="number"
+                        min={1}
+                        value={form.guestCount}
+                        onChange={(e) =>
+                          setForm((f) => ({ ...f, guestCount: e.target.value }))
+                        }
+                        className={inputClass}
+                        placeholder="مثال: 100"
+                      />
+                      {errors.guestCount && (
+                        <p className="mt-1 text-xs font-semibold text-red-600">
+                          {errors.guestCount}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-stone-700">
+                      ملاحظات إضافية
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={form.notes}
+                      onChange={(e) =>
+                        setForm((f) => ({ ...f, notes: e.target.value }))
+                      }
+                      className={inputClass}
+                      placeholder="مكان الفرح، وقت التسليم، طلبات خاصة..."
+                    />
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="mb-1 block text-sm font-bold text-stone-700">
                   منطقة التوصيل
@@ -327,14 +415,14 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       )}
 
       {/* Cart bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-2 border-brand-200 bg-white/95 p-4 shadow-[0_-8px_30px_rgba(190,18,60,0.12)] backdrop-blur-md">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-2 border-gold-400/50 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-900 p-4 shadow-[0_-8px_30px_rgba(76,5,25,0.35)] backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-extrabold text-stone-800">
+            <p className="font-extrabold text-gold-100">
               🛒 {items.length} صنف — الإجمالي:{" "}
-              <span className="text-brand-600">{formatPrice(total)}</span>
+              <span className="text-gold-300">{formatPrice(total)}</span>
             </p>
-            <p className="mt-1 text-xs font-semibold text-stone-500">
+            <p className="mt-1 text-xs font-semibold text-gold-200/70">
               📍 {area}
             </p>
           </div>

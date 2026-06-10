@@ -19,7 +19,7 @@ export default function ProductCard({
   onRemove,
 }: ProductCardProps) {
   return (
-    <article className="group animate-slide-up overflow-hidden rounded-3xl border-2 border-gold-100 bg-white shadow-card transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-warm">
+    <article className="product-card group animate-slide-up">
       <div className="relative aspect-[4/3] overflow-hidden bg-brand-50">
         {product.image ? (
           <Image

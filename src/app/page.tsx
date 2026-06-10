@@ -88,35 +88,51 @@ export default function HomePage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-50/80 via-warm-bg to-white" />
-        <div className="pattern-dots absolute inset-0 opacity-60" />
-        <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-brand-200/25 blur-3xl" />
+      <section className="hero-shell relative overflow-hidden">
+        <div className="pattern-dots absolute inset-0 opacity-40" />
+        <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-gold-400/20 blur-3xl" />
+        <div className="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-brand-400/20 blur-3xl" />
 
-        <div className="relative mx-auto max-w-3xl px-4 py-14 text-center md:py-20">
+        <div className="relative mx-auto max-w-4xl px-4 py-14 text-center md:py-20">
           <div className="animate-slide-up">
             <span className="hero-badge mb-6">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-600 text-xs text-white">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold-400 text-xs text-brand-900">
                 ✓
               </span>
               حساب موثّق — ١٫٥ ألف متابع
             </span>
 
-            <h1 className="mb-3 text-4xl font-black leading-tight text-stone-900 md:text-5xl">
+            <h1 className="mb-3 text-4xl font-black leading-tight text-white md:text-5xl">
               {siteConfig.nameAr}
             </h1>
-            <p className="mb-4 text-3xl font-black text-brand-600 md:text-4xl">
+            <p className="mb-4 text-3xl font-black text-gold-300 md:text-4xl">
               أكل منزلي فاخر
             </p>
-            <p className="mx-auto mb-8 max-w-lg text-base font-medium text-stone-600 md:text-lg">
+            <p className="mx-auto mb-8 max-w-lg text-base font-medium text-gold-100/90 md:text-lg">
               {siteConfig.tagline}
             </p>
 
-            <div className="mb-10 flex flex-wrap justify-center gap-2.5">
+            <div className="mb-8 flex flex-wrap justify-center gap-2.5">
               {siteConfig.specialties.map((s) => (
                 <span key={s} className="hero-tag">
                   {s}
                 </span>
+              ))}
+            </div>
+
+            <div className="mb-10 grid grid-cols-3 gap-2 sm:grid-cols-6">
+              {[
+                { href: "#weddings", emoji: "💒", label: "الأفراح" },
+                { href: "#grooms", emoji: "💍", label: "العرسان" },
+                { href: "#parties", emoji: "🎉", label: "عزومات" },
+                { href: "#trays", emoji: "🍱", label: "صواني" },
+                { href: "#drinks", emoji: "🥤", label: "مشروبات" },
+                { href: "#menu", emoji: "🍽️", label: "المنيو" },
+              ].map((link) => (
+                <a key={link.href} href={link.href} className="quick-link">
+                  <span className="text-2xl">{link.emoji}</span>
+                  {link.label}
+                </a>
               ))}
             </div>
 
@@ -139,20 +155,20 @@ export default function HomePage() {
       </section>
 
       {/* Delivery */}
-      <section id="delivery" className="border-y border-gold-100 bg-white py-12">
+      <section id="delivery" className="py-12">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="section-title mb-8">🚚 التوصيل</h2>
+          <h2 className="section-title mb-8 text-center">🚚 التوصيل</h2>
           <div className="grid gap-4 sm:grid-cols-3">
             {siteConfig.deliveryAreas.map((a, i) => (
               <div
                 key={a}
-                className="rounded-3xl border-2 border-gold-100 bg-gradient-to-br from-gold-50 to-brand-50 p-6 text-center shadow-sm transition hover:shadow-warm"
+                className="section-panel p-6 text-center transition hover:shadow-warm"
               >
                 <p className="text-4xl">{i === 0 ? "🏠" : "🏙️"}</p>
-                <p className="mt-3 text-lg font-extrabold text-stone-800">{a}</p>
+                <p className="mt-3 text-lg font-extrabold text-brand-800">{a}</p>
               </div>
             ))}
-            <div className="rounded-3xl border-2 border-brand-300 bg-gradient-to-br from-brand-600 to-brand-500 p-6 text-center text-white shadow-warm">
+            <div className="rounded-3xl border-2 border-brand-400 bg-gradient-to-br from-brand-700 to-brand-600 p-6 text-center text-white shadow-warm">
               <p className="text-4xl">⏰</p>
               <p className="mt-3 text-lg font-extrabold">{siteConfig.deliveryNote}</p>
             </div>
@@ -238,7 +254,7 @@ export default function HomePage() {
                   className={`rounded-2xl px-5 py-2.5 text-sm font-extrabold transition ${
                     filter === cat
                       ? "bg-gradient-to-l from-brand-600 to-brand-500 text-white shadow-warm"
-                      : "border-2 border-gold-200 bg-white text-stone-600 hover:border-brand-300 hover:text-brand-700"
+                      : "border-2 border-gold-300/60 bg-gold-50/80 text-brand-800 hover:border-brand-400 hover:bg-brand-50"
                   }`}
                 >
                   {cat}
@@ -273,16 +289,13 @@ export default function HomePage() {
 
       {/* Reviews */}
       {reviews.length > 0 && (
-        <section id="reviews" className="border-t border-gold-100 bg-gradient-to-b from-gold-50 to-white py-14">
+        <section id="reviews" className="border-t border-gold-300/40 bg-gradient-to-b from-gold-100/50 to-warm-bg py-14">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="section-title mb-2">⭐ آراء العملاء</h2>
-            <p className="mb-8 text-stone-500">آراء حقيقية من عملاء Cheef Mohamed Shaban</p>
+            <p className="mb-8 text-brand-800/70">آراء حقيقية من عملاء Cheef Mohamed Shaban</p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {reviews.map((review, i) => (
-                <div
-                  key={i}
-                  className="overflow-hidden rounded-3xl border-2 border-gold-100 bg-white shadow-card transition hover:shadow-warm"
-                >
+                <div key={i} className="product-card">
                   {review.image && (
                     <div className="relative aspect-video w-full bg-brand-50">
                       <Image
