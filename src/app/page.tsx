@@ -62,11 +62,14 @@ export default function HomePage() {
   const drinkProducts = products.filter((p) => p.category === drinksCategory);
   const menuProducts = products.filter((p) => !sectionCats.includes(p.category));
 
-  const categories = ["الكل", ...new Set(menuProducts.map((p) => p.category))];
+  const menuCategories = [...new Set(menuProducts.map((p) => p.category))];
+  const categories = ["الكل", ...menuCategories, ...sectionCats];
   const filtered =
     filter === "الكل"
       ? menuProducts
-      : menuProducts.filter((p) => p.category === filter);
+      : sectionCats.includes(filter)
+        ? products.filter((p) => p.category === filter)
+        : menuProducts.filter((p) => p.category === filter);
 
   const addToCart = (id: string) =>
     setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
