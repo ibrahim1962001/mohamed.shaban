@@ -1,9 +1,6 @@
 import { siteConfig, getWhatsAppLink } from "@/lib/config";
 
 const quickLinks = [
-  { href: "#weddings", label: "أكل الأفراح" },
-  { href: "#grooms", label: "أكل العرسان" },
-  { href: "#parties", label: "العزومات" },
   { href: "#menu", label: "المنيو" },
   { href: "#delivery", label: "التوصيل" },
 ];

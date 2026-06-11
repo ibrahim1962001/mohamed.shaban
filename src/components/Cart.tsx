@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Product } from "@/lib/types";
-import { formatPrice, getWhatsAppLink, siteConfig } from "@/lib/config";
+import { getWhatsAppLink, siteConfig } from "@/lib/config";
 
 interface CartItem {
   product: Product;
@@ -48,16 +48,9 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
   const [form, setForm] = useState<OrderForm>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof OrderForm, string>>>({});
 
-  const total = items.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0
-  );
+  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const hasEventItems = items.some(
-    (item) =>
-      item.product.category === "أكل الأفراح" ||
-      item.product.category === "أكل العرسان"
-  );
+  const hasEventItems = false;
 
   const paymentLabel =
     siteConfig.paymentOptions.find((p) => p.id === form.payment)?.label ??
@@ -79,10 +72,10 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
       "📋 *الطلب:*",
       ...items.map(
         (item) =>
-          `• ${item.product.name} (${item.product.unit}) × ${item.quantity} = ${formatPrice(item.product.price * item.quantity)}`
+          `• ${item.product.name} (${item.product.unit}) × ${item.quantity}`
       ),
       "",
-      `💰 *الإجمالي:* ${formatPrice(total)}`,
+      "💬 *الأسعار حسب الكمية — هنتواصل معاك للتأكيد*",
       `📍 *منطقة التوصيل:* ${area}`,
       `💳 *طريقة الدفع:* ${paymentLabel}`,
       ...(order.eventDate.trim()
@@ -158,7 +151,7 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
               <div>
                 <h2 className="text-xl font-black text-stone-800">إتمام الطلب</h2>
                 <p className="text-sm text-stone-500">
-                  {items.length} صنف — {formatPrice(total)}
+                  {items.length} صنف — {itemCount} قطعة
                 </p>
               </div>
               <button
@@ -176,8 +169,7 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
               <ul className="space-y-1 text-sm text-stone-600">
                 {items.map(({ product, quantity }) => (
                   <li key={product.id}>
-                    {product.name} × {quantity} —{" "}
-                    {formatPrice(product.price * quantity)}
+                    {product.name} × {quantity}
                   </li>
                 ))}
               </ul>
@@ -419,8 +411,7 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
         <div className="mx-auto flex max-w-6xl flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
           <div className="min-w-0">
             <p className="truncate text-sm font-extrabold text-brand-50 sm:text-base">
-              🛒 {items.length} صنف —{" "}
-              <span className="text-gold-300">{formatPrice(total)}</span>
+              🛒 {items.length} صنف — {itemCount} قطعة
             </p>
             <p className="mt-0.5 text-[11px] font-semibold text-brand-200/80 sm:mt-1 sm:text-xs">
               📍 {area}

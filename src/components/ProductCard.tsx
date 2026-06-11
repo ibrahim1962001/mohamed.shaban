@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import type { Product } from "@/lib/types";
-import { formatPrice } from "@/lib/config";
 import PrepStatusBadge from "@/components/PrepStatusBadge";
 
 interface ProductCardProps {
@@ -62,10 +61,9 @@ export default function ProductCard({
         <p className="mb-2 hidden line-clamp-2 text-xs leading-relaxed text-stone-600 sm:mb-4 sm:block sm:line-clamp-3 sm:text-sm">
           {product.description || "—"}
         </p>
-        <div className="mb-2 sm:mb-4">
-          <p className="text-sm font-black text-brand-700 sm:text-2xl">{formatPrice(product.price)}</p>
-          <p className="text-[10px] font-semibold text-stone-400 sm:text-xs">/ {product.unit}</p>
-        </div>
+        <p className="mb-2 text-[10px] font-semibold text-brand-600 sm:mb-4 sm:text-xs">
+          للاستفسار عن السعر — تواصل على واتساب
+        </p>
 
         {product.available && (
           quantity > 0 ? (

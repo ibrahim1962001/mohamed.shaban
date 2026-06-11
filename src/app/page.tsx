@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
-import ProductSection from "@/components/ProductSection";
 import SectionHeader from "@/components/SectionHeader";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -39,34 +38,11 @@ export default function HomePage() {
       .catch(() => setLoading(false));
   }, []);
 
-  const {
-    weddings: weddingsCategory,
-    grooms: groomsCategory,
-    parties: partiesCategory,
-    trays: traysCategory,
-    drinks: drinksCategory,
-  } = siteConfig.sectionCategories;
-
-  const sectionCats = [
-    weddingsCategory,
-    groomsCategory,
-    partiesCategory,
-    traysCategory,
-    drinksCategory,
-  ];
-
-  const weddingProducts = products.filter((p) => p.category === weddingsCategory);
-  const groomsProducts = products.filter((p) => p.category === groomsCategory);
-  const partyProducts = products.filter((p) => p.category === partiesCategory);
-  const trayProducts = products.filter((p) => p.category === traysCategory);
-  const drinkProducts = products.filter((p) => p.category === drinksCategory);
-  const menuProducts = products.filter((p) => !sectionCats.includes(p.category));
-
-  const categories = ["الكل", ...new Set(menuProducts.map((p) => p.category))];
+  const categories = ["الكل", ...new Set(products.map((p) => p.category))];
   const filtered =
     filter === "الكل"
-      ? menuProducts
-      : menuProducts.filter((p) => p.category === filter);
+      ? products
+      : products.filter((p) => p.category === filter);
 
   const addToCart = (id: string) =>
     setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
@@ -148,14 +124,10 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2">
+              <div className="mt-4 grid grid-cols-2 gap-1.5 sm:gap-2">
                 {[
-                  { href: "#weddings", emoji: "💒", label: "الأفراح" },
-                  { href: "#grooms", emoji: "💍", label: "العرسان" },
-                  { href: "#parties", emoji: "🎉", label: "عزومات" },
-                  { href: "#trays", emoji: "🍱", label: "صواني" },
-                  { href: "#drinks", emoji: "🥤", label: "مشروبات" },
                   { href: "#menu", emoji: "🍽️", label: "المنيو" },
+                  { href: "#delivery", emoji: "🚚", label: "التوصيل" },
                 ].map((link) => (
                   <a key={link.href} href={link.href} className="quick-link">
                     <span className="text-xl sm:text-2xl">{link.emoji}</span>
@@ -174,7 +146,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="ليه تختارنا"
             title="شغل بيتي بمعايير احترافية"
-            subtitle="من التتبيلات اليومية لبوفيهات الأفراح — جودة ثابتة وطعم مميز."
+            subtitle="تتبيلات ووجبات جاهزة للتسوية والشوي — شغل بيتي بجودة ثابتة."
             align="center"
           />
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
@@ -216,78 +188,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ProductSection
-        id="weddings"
-        title="أكل الأفراح"
-        subtitle={siteConfig.weddingsIntro}
-        emoji="💒"
-        products={weddingProducts}
-        loading={loading}
-        cart={cart}
-        onAdd={addToCart}
-        onRemove={removeFromCart}
-        accent="brand"
-      />
-
-      <ProductSection
-        id="grooms"
-        title="أكل العرسان"
-        subtitle={siteConfig.groomsIntro}
-        emoji="💍"
-        products={groomsProducts}
-        loading={loading}
-        cart={cart}
-        onAdd={addToCart}
-        onRemove={removeFromCart}
-        accent="gold"
-      />
-
-      <ProductSection
-        id="parties"
-        title="العزومات"
-        subtitle={siteConfig.partiesIntro}
-        emoji="🎉"
-        products={partyProducts}
-        loading={loading}
-        cart={cart}
-        onAdd={addToCart}
-        onRemove={removeFromCart}
-        accent="brand"
-      />
-
-      <ProductSection
-        id="trays"
-        title="الصواني"
-        subtitle={siteConfig.traysIntro}
-        emoji="🍱"
-        products={trayProducts}
-        loading={loading}
-        cart={cart}
-        onAdd={addToCart}
-        onRemove={removeFromCart}
-        accent="gold"
-      />
-
-      <ProductSection
-        id="drinks"
-        title="مشروبات ساقعة"
-        subtitle={siteConfig.drinksIntro}
-        emoji="🥤"
-        products={drinkProducts}
-        loading={loading}
-        cart={cart}
-        onAdd={addToCart}
-        onRemove={removeFromCart}
-        accent="sky"
-      />
-
       {/* Menu */}
       <section id="menu" className="py-8 pb-32 sm:py-14 sm:pb-36">
         <div className="mx-auto max-w-6xl px-3 sm:px-4">
           <SectionHeader
-            eyebrow="🍽️ المنيو الكامل"
+            eyebrow="🍽️ المنيو"
             title="اختار من أصنافنا"
-            subtitle={`أكثر من ${products.length || 72} صنف — لحوم، دواجن، محاشي، وجبات جاهزة وأكتر.`}
+            subtitle="أصناف جاهزة للتسوية والشوي — للاستفسار عن السعر تواصل على واتساب."
           />
           <div className="filter-scroll -mx-3 mb-6 overflow-x-auto px-3 sm:mx-0 sm:mb-8 sm:overflow-visible sm:px-0">
             <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">

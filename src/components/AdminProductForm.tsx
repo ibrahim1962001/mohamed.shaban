@@ -351,9 +351,7 @@ export function AdminProductList({
                     </span>
                   )}
                 </div>
-                <p className="text-sm font-bold text-brand-600">
-                  {p.price.toLocaleString("ar-EG")} جنيه / {p.unit}
-                </p>
+                <p className="text-sm font-bold text-brand-600">{p.unit}</p>
                 <p className="mt-1 line-clamp-1 text-xs text-stone-500">
                   {p.description || "—"}
                 </p>

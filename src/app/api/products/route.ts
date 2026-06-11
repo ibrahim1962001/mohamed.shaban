@@ -16,9 +16,9 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ProductInput;
 
-    if (!body.name?.trim() || !body.price || body.price <= 0) {
+    if (!body.name?.trim()) {
       return NextResponse.json(
-        { error: "الاسم والسعر مطلوبان" },
+        { error: "اسم المنتج مطلوب" },
         { status: 400 }
       );
     }
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const product = createProduct({
       name: body.name.trim(),
       description: body.description?.trim() || "",
-      price: Number(body.price),
+      price: 0,
       unit: body.unit?.trim() || "قطعة",
       category: body.category?.trim() || "عام",
       image: body.image || "",
