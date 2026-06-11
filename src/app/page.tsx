@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
+import ProductSection from "@/components/ProductSection";
 import SectionHeader from "@/components/SectionHeader";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -38,11 +39,34 @@ export default function HomePage() {
       .catch(() => setLoading(false));
   }, []);
 
-  const categories = ["الكل", ...new Set(products.map((p) => p.category))];
+  const {
+    weddings: weddingsCategory,
+    grooms: groomsCategory,
+    parties: partiesCategory,
+    trays: traysCategory,
+    drinks: drinksCategory,
+  } = siteConfig.sectionCategories;
+
+  const sectionCats = [
+    weddingsCategory,
+    groomsCategory,
+    partiesCategory,
+    traysCategory,
+    drinksCategory,
+  ];
+
+  const weddingProducts = products.filter((p) => p.category === weddingsCategory);
+  const groomsProducts = products.filter((p) => p.category === groomsCategory);
+  const partyProducts = products.filter((p) => p.category === partiesCategory);
+  const trayProducts = products.filter((p) => p.category === traysCategory);
+  const drinkProducts = products.filter((p) => p.category === drinksCategory);
+  const menuProducts = products.filter((p) => !sectionCats.includes(p.category));
+
+  const categories = ["الكل", ...new Set(menuProducts.map((p) => p.category))];
   const filtered =
     filter === "الكل"
-      ? products
-      : products.filter((p) => p.category === filter);
+      ? menuProducts
+      : menuProducts.filter((p) => p.category === filter);
 
   const addToCart = (id: string) =>
     setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
@@ -124,10 +148,14 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <div className="mt-4 grid grid-cols-2 gap-1.5 sm:gap-2">
+              <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2">
                 {[
                   { href: "#menu", emoji: "🍽️", label: "المنيو" },
-                  { href: "#delivery", emoji: "🚚", label: "التوصيل" },
+                  { href: "#weddings", emoji: "💒", label: "الأفراح" },
+                  { href: "#grooms", emoji: "💍", label: "العرسان" },
+                  { href: "#parties", emoji: "🎉", label: "عزومات" },
+                  { href: "#trays", emoji: "🍱", label: "صواني" },
+                  { href: "#drinks", emoji: "🥤", label: "مشروبات" },
                 ].map((link) => (
                   <a key={link.href} href={link.href} className="quick-link">
                     <span className="text-xl sm:text-2xl">{link.emoji}</span>
@@ -140,61 +168,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="py-8 sm:py-12">
-        <div className="mx-auto max-w-6xl px-3 sm:px-4">
-          <SectionHeader
-            eyebrow="ليه تختارنا"
-            title="شغل بيتي بمعايير احترافية"
-            subtitle="تتبيلات ووجبات جاهزة للتسوية والشوي — شغل بيتي بجودة ثابتة."
-            align="center"
-          />
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
-            {siteConfig.whyUs.map((item) => (
-              <div key={item.title} className="why-card">
-                <p className="text-2xl sm:text-3xl">{item.icon}</p>
-                <p className="mt-2 text-sm font-extrabold text-brand-900 sm:text-base">{item.title}</p>
-                <p className="mt-1 hidden text-xs leading-relaxed text-stone-500 sm:block">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Delivery */}
-      <section id="delivery" className="py-8 sm:py-12">
-        <div className="mx-auto max-w-6xl px-3 sm:px-4">
-          <SectionHeader
-            eyebrow="🚚 التوصيل"
-            title="بنوصل لحد بابك"
-            subtitle={siteConfig.deliveryNote}
-            align="center"
-          />
-          <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-            {siteConfig.deliveryAreas.map((a, i) => (
-              <div
-                key={a}
-                className="section-panel p-4 text-center transition hover:shadow-warm sm:p-6"
-              >
-                <p className="text-3xl sm:text-4xl">{i === 0 ? "🏠" : "🏙️"}</p>
-                <p className="mt-2 text-base font-extrabold text-brand-800 sm:mt-3 sm:text-lg">{a}</p>
-              </div>
-            ))}
-            <div className="rounded-2xl border-2 border-brand-500 bg-gradient-to-br from-brand-700 to-brand-600 p-4 text-center text-white shadow-warm sm:rounded-3xl sm:p-6">
-              <p className="text-3xl sm:text-4xl">⏰</p>
-              <p className="mt-2 text-base font-extrabold sm:mt-3 sm:text-lg">{siteConfig.deliveryNote}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Menu */}
-      <section id="menu" className="py-8 pb-32 sm:py-14 sm:pb-36">
+      <section id="menu" className="border-b border-brand-200/40 bg-warm-bg py-8 sm:py-12">
         <div className="mx-auto max-w-6xl px-3 sm:px-4">
           <SectionHeader
             eyebrow="🍽️ المنيو"
             title="اختار من أصنافنا"
-            subtitle="أصناف جاهزة للتسوية والشوي — للاستفسار عن السعر تواصل على واتساب."
+            subtitle="أصناف جاهزة للتسوية والشوي — بالصور. للاستفسار عن السعر تواصل على واتساب."
           />
           <div className="filter-scroll -mx-3 mb-6 overflow-x-auto px-3 sm:mx-0 sm:mb-8 sm:overflow-visible sm:px-0">
             <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
@@ -238,6 +218,115 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Why us */}
+      <section className="py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl px-3 sm:px-4">
+          <SectionHeader
+            eyebrow="ليه تختارنا"
+            title="شغل بيتي بمعايير احترافية"
+            subtitle="تتبيلات ووجبات جاهزة للتسوية والشوي — شغل بيتي بجودة ثابتة."
+            align="center"
+          />
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
+            {siteConfig.whyUs.map((item) => (
+              <div key={item.title} className="why-card">
+                <p className="text-2xl sm:text-3xl">{item.icon}</p>
+                <p className="mt-2 text-sm font-extrabold text-brand-900 sm:text-base">{item.title}</p>
+                <p className="mt-1 hidden text-xs leading-relaxed text-stone-500 sm:block">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery */}
+      <section id="delivery" className="py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl px-3 sm:px-4">
+          <SectionHeader
+            eyebrow="🚚 التوصيل"
+            title="بنوصل لحد بابك"
+            subtitle={siteConfig.deliveryNote}
+            align="center"
+          />
+          <div className="mx-auto grid max-w-md gap-3 sm:max-w-none sm:grid-cols-2 sm:gap-4">
+            {siteConfig.deliveryAreas.map((a, i) => (
+              <div
+                key={a}
+                className="section-panel p-4 text-center transition hover:shadow-warm sm:p-6"
+              >
+                <p className="text-3xl sm:text-4xl">{i === 0 ? "🏠" : "🏙️"}</p>
+                <p className="mt-2 text-base font-extrabold text-brand-800 sm:mt-3 sm:text-lg">{a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ProductSection
+        id="weddings"
+        title="أكل الأفراح"
+        subtitle={siteConfig.weddingsIntro}
+        emoji="💒"
+        products={weddingProducts}
+        loading={loading}
+        cart={cart}
+        onAdd={addToCart}
+        onRemove={removeFromCart}
+        accent="brand"
+      />
+
+      <ProductSection
+        id="grooms"
+        title="أكل العرسان"
+        subtitle={siteConfig.groomsIntro}
+        emoji="💍"
+        products={groomsProducts}
+        loading={loading}
+        cart={cart}
+        onAdd={addToCart}
+        onRemove={removeFromCart}
+        accent="gold"
+      />
+
+      <ProductSection
+        id="parties"
+        title="العزومات"
+        subtitle={siteConfig.partiesIntro}
+        emoji="🎉"
+        products={partyProducts}
+        loading={loading}
+        cart={cart}
+        onAdd={addToCart}
+        onRemove={removeFromCart}
+        accent="brand"
+      />
+
+      <ProductSection
+        id="trays"
+        title="الصواني"
+        subtitle={siteConfig.traysIntro}
+        emoji="🍱"
+        products={trayProducts}
+        loading={loading}
+        cart={cart}
+        onAdd={addToCart}
+        onRemove={removeFromCart}
+        accent="gold"
+      />
+
+      <ProductSection
+        id="drinks"
+        title="مشروبات ساقعة"
+        subtitle={siteConfig.drinksIntro}
+        emoji="🥤"
+        products={drinkProducts}
+        loading={loading}
+        cart={cart}
+        onAdd={addToCart}
+        onRemove={removeFromCart}
+        accent="sky"
+      />
+
       {/* Reviews */}
       {reviews.length > 0 && (
         <section id="reviews" className="border-t border-brand-200/40 bg-gradient-to-b from-brand-50/40 to-warm-bg py-8 sm:py-14">
@@ -248,23 +337,26 @@ export default function HomePage() {
               subtitle="آراء حقيقية من عملاء Cheef Mohamed Shaban"
               align="center"
             />
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
               {reviews.map((review, i) => (
-                <div key={i} className="product-card">
+                <div key={i} className="product-card overflow-hidden">
                   {review.image && (
-                    <div className="relative aspect-video w-full bg-brand-50">
+                    <div className="relative h-64 w-full bg-stone-100 sm:h-72 lg:h-80">
                       <Image
                         src={review.image}
-                        alt={`رأي ${review.name}`}
+                        alt={`رأي عميل ${i + 1}`}
                         fill
-                        className="object-cover object-top"
+                        className="object-contain object-center p-1"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>
                   )}
-                  <div className="p-5">
-                    <p className="mb-3 text-sm leading-relaxed text-stone-700">{review.text}</p>
-                    <p className="text-sm font-extrabold text-brand-600">— {review.name}</p>
-                  </div>
+                  {review.text?.trim() && (
+                    <div className="p-4 sm:p-5">
+                      <p className="mb-2 text-sm leading-relaxed text-stone-700">{review.text}</p>
+                      <p className="text-sm font-extrabold text-brand-600">— {review.name}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -273,7 +365,7 @@ export default function HomePage() {
       )}
 
       {/* CTA */}
-      <section className="px-3 pb-8 sm:px-4 sm:pb-12">
+      <section className="px-3 pb-32 sm:px-4 sm:pb-36">
         <div className="cta-banner mx-auto max-w-6xl">
           <h2 className="text-xl font-black text-white sm:text-2xl">جاهز تطلب؟</h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-brand-100 sm:text-base">

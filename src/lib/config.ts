@@ -5,8 +5,9 @@ export const siteConfig = {
   facebookUrl: "https://www.facebook.com/mohamed.shaban.129491",
   chefPhoto: "/chef-photo.png",
   whatsappNumber: process.env.WHATSAPP_NUMBER || "201025849938",
+  contactPhone: process.env.CONTACT_PHONE || "0133411350",
   deliveryAreas: ["بنها (كل المناطق)", "القاهرة"],
-  deliveryNote: "المندوب يخرج يومياً الساعة 3:00 مساءً",
+  deliveryNote: "موعد التوصيل يتحدد معاك على واتساب",
   specialties: ["تتبيلات الفراخ", "تجهيز الوجبات", "شغل فاخر يوم بيومه"],
   whyUs: [
     {
@@ -17,7 +18,7 @@ export const siteConfig = {
     {
       icon: "🚚",
       title: "توصيل يومي",
-      desc: "مندوب ثابت يخرج الساعة 3 مساءً لبنها والقاهرة.",
+      desc: "توصيل لبنها والقاهرة — نتفق على الموعد على واتساب.",
     },
     {
       icon: "💒",
@@ -54,6 +55,11 @@ export const siteConfig = {
     "مقبلات",
     "لحوم",
     "أسماك",
+    "عزومات",
+    "صواني",
+    "مشروبات ساقعة",
+    "أكل الأفراح",
+    "أكل العرسان",
   ],
   paymentOptions: [
     { id: "cash", label: "كاش عند الاستلام" },
@@ -66,6 +72,16 @@ export const siteConfig = {
 export function getWhatsAppLink(message: string): string {
   const number = siteConfig.whatsappNumber.replace(/\D/g, "");
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export function getTelLink(phone = siteConfig.contactPhone): string {
+  const digits = phone.replace(/\D/g, "");
+  const normalized = digits.startsWith("20") ? digits : `20${digits.replace(/^0/, "")}`;
+  return `tel:+${normalized}`;
+}
+
+export function formatPhoneDisplay(phone = siteConfig.contactPhone): string {
+  return phone;
 }
 
 export function formatPrice(price: number): string {

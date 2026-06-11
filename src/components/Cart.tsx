@@ -50,7 +50,11 @@ export default function Cart({ items, area, onAreaChange, onClear }: CartProps) 
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const hasEventItems = false;
+  const hasEventItems = items.some(
+    (item) =>
+      item.product.category === "أكل الأفراح" ||
+      item.product.category === "أكل العرسان"
+  );
 
   const paymentLabel =
     siteConfig.paymentOptions.find((p) => p.id === form.payment)?.label ??

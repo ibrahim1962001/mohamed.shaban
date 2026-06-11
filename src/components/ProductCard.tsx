@@ -19,13 +19,13 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <article className="product-card group animate-slide-up">
-      <div className="relative aspect-square overflow-hidden bg-brand-50 sm:aspect-[4/3]">
+      <div className="relative aspect-[4/3] max-h-44 overflow-hidden bg-brand-50 sm:max-h-56 sm:aspect-[5/4]">
         {product.image ? (
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover transition duration-500 group-hover:scale-110"
+            className="object-cover object-top transition duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         ) : (
@@ -55,14 +55,13 @@ export default function ProductCard({
       </div>
 
       <div className="card-body p-2.5 sm:p-5">
-        <h3 className="mb-1 line-clamp-2 text-xs font-extrabold leading-snug text-stone-800 sm:mb-2 sm:text-lg">
-          {product.name}
-        </h3>
-        <p className="mb-2 hidden line-clamp-2 text-xs leading-relaxed text-stone-600 sm:mb-4 sm:block sm:line-clamp-3 sm:text-sm">
-          {product.description || "—"}
-        </p>
-        <p className="mb-2 text-[10px] font-semibold text-brand-600 sm:mb-4 sm:text-xs">
-          للاستفسار عن السعر — تواصل على واتساب
+        {!product.image && (
+          <h3 className="mb-1 line-clamp-2 text-xs font-extrabold leading-snug text-stone-800 sm:mb-2 sm:text-base">
+            {product.name}
+          </h3>
+        )}
+        <p className="mb-2 line-clamp-3 text-xs leading-relaxed text-stone-700 sm:mb-4 sm:text-sm">
+          {product.description || product.name}
         </p>
 
         {product.available && (

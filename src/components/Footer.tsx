@@ -1,6 +1,9 @@
-import { siteConfig, getWhatsAppLink } from "@/lib/config";
+import { siteConfig, getWhatsAppLink, getTelLink, formatPhoneDisplay } from "@/lib/config";
 
 const quickLinks = [
+  { href: "#weddings", label: "أكل الأفراح" },
+  { href: "#grooms", label: "أكل العرسان" },
+  { href: "#parties", label: "العزومات" },
   { href: "#menu", label: "المنيو" },
   { href: "#delivery", label: "التوصيل" },
 ];
@@ -39,6 +42,13 @@ export default function Footer() {
           <div>
             <p className="mb-3 text-sm font-extrabold text-gold-400">تواصل معانا</p>
             <div className="flex flex-col gap-2">
+              <a
+                href={getTelLink()}
+                dir="ltr"
+                className="rounded-xl border-2 border-gold-400/40 bg-brand-900/40 px-4 py-3 text-center text-sm font-bold text-gold-300 transition hover:bg-brand-800/60"
+              >
+                📞 {formatPhoneDisplay()}
+              </a>
               <a
                 href={getWhatsAppLink("مرحباً، عايز أطلب")}
                 target="_blank"

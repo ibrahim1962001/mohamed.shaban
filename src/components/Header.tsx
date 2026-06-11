@@ -6,9 +6,13 @@ import Image from "next/image";
 import { siteConfig, getWhatsAppLink } from "@/lib/config";
 
 const navItems = [
+  { href: "#weddings", label: "أكل الأفراح", emoji: "💒" },
+  { href: "#grooms", label: "أكل العرسان", emoji: "💍" },
+  { href: "#parties", label: "العزومات", emoji: "🎉" },
+  { href: "#trays", label: "الصواني", emoji: "🍱" },
+  { href: "#drinks", label: "مشروبات ساقعة", emoji: "🥤" },
   { href: "#menu", label: "المنيو", emoji: "🍽️" },
   { href: "#delivery", label: "التوصيل", emoji: "🚚" },
-  { href: "#reviews", label: "آراء العملاء", emoji: "⭐" },
 ];
 
 export default function Header() {
@@ -35,7 +39,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex">
-          {navItems.map((item) => (
+          {navItems.slice(0, 6).map((item) => (
             <a
               key={item.href}
               href={item.href}

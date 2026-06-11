@@ -3,6 +3,7 @@ import path from "path";
 import type { Product, ProductInput } from "./types";
 import { productDescriptions } from "./product-descriptions";
 import { defaultPrepStatusForCategory } from "./prep-status";
+import { sectionProductsSeed } from "./sections-seed";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(process.cwd(), "data", "products.json");
@@ -43,6 +44,7 @@ export const seedProducts: Product[] = [
   item("5", "سمبوسه ميكس جبن", "سمبوسك جبن ميكس جاهز للقلي — مقرمش وطعم مميز.", 0, "صينية", "مقبلات", false, "instant"),
   item("6", "ارانب جاهزه علي السوا", "أرانب بلدي منظفة وجاهزة للسوا — طازة ونظيفة.", 0, "أرنب", "لحوم", false, "instant"),
   item("7", "سمك بلطي متبل جاهز", "بلطي متبل بالفلفل والتوابل — جاهز للقلي أو الشوي.", 0, "سمكة", "أسماك", true, "instant"),
+  ...sectionProductsSeed,
 ];
 
 function ensureDataFile(): void {
