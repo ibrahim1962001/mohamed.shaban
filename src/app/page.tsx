@@ -245,7 +245,6 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="🚚 التوصيل"
             title="بنوصل لحد بابك"
-            subtitle={siteConfig.deliveryNote}
             align="center"
           />
           <div className="mx-auto grid max-w-md gap-3 sm:max-w-none sm:grid-cols-2 sm:gap-4">

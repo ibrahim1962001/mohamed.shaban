@@ -7,7 +7,6 @@ export const siteConfig = {
   whatsappNumber: process.env.WHATSAPP_NUMBER || "201025849938",
   contactPhone: process.env.CONTACT_PHONE || "0133411350",
   deliveryAreas: ["بنها (كل المناطق)", "القاهرة"],
-  deliveryNote: "موعد التوصيل يتحدد معاك على واتساب",
   specialties: ["تتبيلات الفراخ", "تجهيز الوجبات", "شغل فاخر يوم بيومه"],
   whyUs: [
     {
