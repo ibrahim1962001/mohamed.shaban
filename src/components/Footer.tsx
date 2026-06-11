@@ -62,19 +62,23 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-brand-800 pt-6 text-center text-xs text-brand-300/50">
-          <p>© {new Date().getFullYear()} {siteConfig.nameAr} — كل الحقوق محفوظة</p>
-          <p className="mt-2 text-brand-200/60">
-            Website designed by{" "}
-            <span className="font-semibold text-gold-300/80">Ibrahim Sabry</span>
-            {" · "}
+        <div className="mt-8 border-t border-brand-700/80 pt-6 text-center">
+          <p className="text-xs text-brand-200/80">
+            © {new Date().getFullYear()} {siteConfig.nameAr} — كل الحقوق محفوظة
+          </p>
+          <div className="mt-4 rounded-xl border border-gold-500/30 bg-brand-900/60 px-4 py-3">
+            <p className="text-sm font-semibold text-white">
+              Website designed by{" "}
+              <span className="font-extrabold text-gold-300">Ibrahim Sabry</span>
+            </p>
             <a
               href="tel:+201098144372"
-              className="font-semibold text-brand-100/70 transition hover:text-gold-300"
+              dir="ltr"
+              className="mt-1 inline-block text-base font-extrabold tracking-wide text-gold-400 transition hover:text-gold-200"
             >
               01098144372
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
